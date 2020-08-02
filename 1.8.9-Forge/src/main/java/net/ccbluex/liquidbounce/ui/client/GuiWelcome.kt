@@ -26,7 +26,7 @@ class GuiWelcome : GuiScreen() {
         val font = Fonts.font35
 
         font.drawCenteredString("感谢您下载和安装我们的客户端！", width / 2F, height / 8F + 70, 0xffffff, true)
-        font.drawCenteredString("如果您第一次用水影，这里有一些您需要知道的信息. :) ", width / 2F, height / 8F + 70 + font.FONT_HEIGHT, 0xffffff, true)
+        font.drawCenteredString("如果您第一次用汉化水影，这里有一些您需要知道的信息. :) ", width / 2F, height / 8F + 70 + font.FONT_HEIGHT, 0xffffff, true)
 
         font.drawCenteredString("§lClickGUI:", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 3, 0xffffff, true)
         font.drawCenteredString("点击 ${Keyboard.getKeyName(LiquidBounce.moduleManager[ClickGUI::class.java]!!.keyBind)} 去打开ClickGUI", width / 2F, height / 8 + 80F + font.FONT_HEIGHT * 4, 0xffffff, true)
@@ -38,9 +38,8 @@ class GuiWelcome : GuiScreen() {
         font.drawCenteredString(".autosettings load <name> / .autosettings list", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 10, 0xffffff, true)
 
         font.drawCenteredString("§l需要帮助？欢迎联系我们！", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 12, 0xffffff, true)
-        font.drawCenteredString("油管: https://youtube.com/ccbluex", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 13, 0xffffff, true)
-        font.drawCenteredString("推特: https://twitter.com/ccbluex", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 14, 0xffffff, true)
-        font.drawCenteredString("论坛: https://forums.ccbluex.net/", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 15, 0xffffff, true)
+        font.drawCenteredString("官网: https://mctest.go176.net/", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 13, 0xffffff, true)
+        font.drawCenteredString("论坛: http://bbs.breeze.asia/", width / 2F, height / 8F + 80 + font.FONT_HEIGHT * 14, 0xffffff, true)
 
         super.drawScreen(mouseX, mouseY, partialTicks)
 
