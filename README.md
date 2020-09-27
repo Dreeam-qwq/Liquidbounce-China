@@ -1,14 +1,11 @@
 # 水影中国
-一个免费的MC 1.8.9 Forge黑客端
+一个免费开源的MC 1.8.9 & 1.12.2 Forge黑客端
 
-Website: https://liquidbounce.net \
-Forum: https://forum.ccbluex.net/index.php \
-Discord: https://discord.gg/gdQ82He \
-YouTube: https://youtube.com/CCBlueX \
-Twitter: https://twitter.com/CCBlueX 
+官网: https://mctest.go176.net/ \
+原水影项目: https://github.com/CCBlueX/Liquidbounce/
 
-## Issues
-If you notice any bugs or missing features, you can let us know by opening an issue [here](https://github.com/CCBlueX/LiquidBounce1.8-Issues/issues).
+## 反馈&建议
+如果您有任何问题或建议，欢迎您在Issues中反馈，或直接联系憨憨adk的邮箱 dreeam_charlie@163.com
 
 ## License
 This project is subject to the [GNU General Public License v3.0](LICENSE). This does only apply for source code located directly in this clean repository. During the development and compilation process, additional source code may be used to which we have obtained no rights. Such code is not covered by the GPL license.
