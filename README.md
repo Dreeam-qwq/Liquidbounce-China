@@ -1,3 +1,5 @@
+项目迁移到https://gitee.com/dreeam/Liquidbounce-China
+
 # 水影中国
 一个免费开源的MC 1.8.9 & 1.12.2 Forge黑客端
 
