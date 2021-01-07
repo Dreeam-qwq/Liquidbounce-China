@@ -5,6 +5,8 @@
  */
 package net.ccbluex.liquidbounce.injection.forge;
 
+import net.ccbluex.liquidbounce.LiquidBounce;
+import net.ccbluex.liquidbounce.injection.backend.WrapperImpl;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.MixinEnvironment;
@@ -15,7 +17,7 @@ import java.util.Map;
 public class MixinLoader implements IFMLLoadingPlugin {
 
     public MixinLoader() {
-        System.out.println("[水影] Injecting with IFMLLoadingPlugin.");
+        System.out.println("[LiquidBounce] Injecting with IFMLLoadingPlugin.");
 
         MixinBootstrap.init();
         Mixins.addConfiguration("liquidbounce.forge.mixins.json");

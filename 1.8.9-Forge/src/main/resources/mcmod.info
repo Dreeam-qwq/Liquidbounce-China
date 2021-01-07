@@ -1,13 +1,13 @@
 [
   {
     "modid": "liquidbounce",
-    "name": "水影",
+    "name": "LiquidBounce",
     "description": "",
     "version": "${version}",
-    "mcversion": "${mcversion}",
-    "url": "https://cn.breeze.asia/liquidbounce/",
+    "mcversion": "1.8.9",
+    "url": "https://liquidbounce.net",
     "updateUrl": "",
-    "authorList": ["CCBlueX,adk"],
+    "authorList": ["CCBlueX"],
     "credits": "",
     "logoFile": "",
     "screenshots": [],
