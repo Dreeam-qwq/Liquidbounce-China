@@ -20,5 +20,5 @@ jobs:
         name: Build
         with:
           job-id: jdk8
-          arguments: gradlew --debug setupDevWorkspace idea genIntellijRuns build
+          arguments: gradle --debug setupDevWorkspace idea genIntellijRuns build
           gradle-version: wrapper
