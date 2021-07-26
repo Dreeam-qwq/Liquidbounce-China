@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "liquidbounce",
+  "version": "${version}",
+  "name": "LiquidBounce",
+  "description": "A free mixin-based injection hacked-client",
+  "authors": [
+    "CCBlueX"
+  ],
+  "contact": {
+    "homepage": "https://liquidbounce.net/",
+    "sources": "https://github.com/CCBlueX/LiquidBounce/",
+    "issues": "https://github.com/CCBlueX/LiquidBounce/issues",
+    "email": "support@liquidbounce.net"
+  },
+  "license": "GNU General Public License v3.0",
+  "icon": "assets/liquidbounce/icon_64x64.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": []
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "liquidbounce.generic.guilded": "https://guilded.gg/CCBlueX",
+        "liquidbounce.generic.forum": "https://forums.ccbluex.net/"
+      }
+    }
+  },
+  "mixins": [
+    "liquidbounce.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.8.7",
+    "fabric-language-kotlin": ">=1.6.1+kotlin.1.5.10",
+    "minecraft": "1.17.x"
+  },
+  "accessWidener": "liquidbounce.accesswidener"
+}
