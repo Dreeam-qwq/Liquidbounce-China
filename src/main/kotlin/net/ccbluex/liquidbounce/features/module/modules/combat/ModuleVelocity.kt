@@ -32,6 +32,12 @@ import net.ccbluex.liquidbounce.utils.entity.strafe
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 import net.minecraft.network.packet.s2c.play.ExplosionS2CPacket
 
+/**
+ * Velocity module
+ *
+ * Modifies the amount of velocity you take.
+ */
+
 object ModuleVelocity : Module("Velocity", Category.COMBAT) {
 
     val modes = choices("Mode", Modify) {
@@ -66,9 +72,9 @@ object ModuleVelocity : Module("Velocity", Category.COMBAT) {
                 }
 
                 // Modify packet according to the specified values
-                packet.velocityX = (packet.velocityX * horizontal).toInt()
-                packet.velocityY = (packet.velocityY * vertical).toInt()
-                packet.velocityZ = (packet.velocityZ * horizontal).toInt()
+                packet.velocityX *= horizontal.toInt()
+                packet.velocityY *= vertical.toInt()
+                packet.velocityZ *= horizontal.toInt()
             } else if (packet is ExplosionS2CPacket) { // Check if velocity is affected by explosion
                 // note: explosion packets are being used by hypixel to trick poorly made cheats.
 
@@ -79,9 +85,9 @@ object ModuleVelocity : Module("Velocity", Category.COMBAT) {
                 }
 
                 //  Modify packet according to the specified values
-                packet.playerVelocityX = packet.playerVelocityX * horizontal
-                packet.playerVelocityY = packet.playerVelocityY * vertical
-                packet.playerVelocityZ = packet.playerVelocityZ * horizontal
+                packet.playerVelocityX *= horizontal
+                packet.playerVelocityY *= vertical
+                packet.playerVelocityZ *= horizontal
             }
         }
 

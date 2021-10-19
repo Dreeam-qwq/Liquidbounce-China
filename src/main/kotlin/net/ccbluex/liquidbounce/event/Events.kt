@@ -19,6 +19,7 @@
 package net.ccbluex.liquidbounce.event
 
 import net.ccbluex.liquidbounce.config.Value
+import net.ccbluex.liquidbounce.features.chat.client.packet.User
 import net.ccbluex.liquidbounce.features.module.Module
 import net.ccbluex.liquidbounce.utils.client.Nameable
 import net.minecraft.block.Block
@@ -124,6 +125,9 @@ class BlockAttackEvent(val pos: BlockPos) : Event()
 @Nameable("blockMultiplier")
 class BlockVelocityMultiplierEvent(val block: Block, var multiplier: Float) : Event()
 
+@Nameable("blockSlipperinessMultiplier")
+class BlockSlipperinessMultiplierEvent(val block: Block, var slipperiness: Float) : Event()
+
 // Entity events
 
 @Nameable("entityMargin")
@@ -195,3 +199,14 @@ class NotificationEvent(val title: String, val message: String, val severity: Se
         ERROR
     }
 }
+
+@Nameable("clientChatMessage")
+class ClientChatMessageEvent(val user: User, val message: String, val chatGroup: ChatGroup) : Event() {
+    enum class ChatGroup {
+        PUBLIC_CHAT,
+        PRIVATE_CHAT
+    }
+}
+
+@Nameable("clientChatError")
+class ClientChatErrorEvent(val error: String) : Event()
