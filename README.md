@@ -20,7 +20,7 @@
 如果你在使用**水影**的时候遇到任何问题/bug或新增的功能, 你可以在 [这里](https://github.com/CCBlueX/LiquidBounce/issues) 创建一个Issue. 记得使用英文:)
 
 ## 许可
-此项目遵守[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). This does only apply for source code located directly in this clean repository. During the development and compilation process, additional source code may be used to which we have obtained no rights. 一些代码不在GPL许可的范围之内.
+此项目遵守[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). 此许可仅仅适用于这个仓库里的源码. 在开发和编译过程中，我们可能使用其他未经授权的源码. 一些代码不在GPL许可的范围之内.
 
 对于那些不熟悉这个开源许可的人, 下面是许可主要内容的一些总结. 这绝不是法律意见, 也不具有法律约束力.
 
