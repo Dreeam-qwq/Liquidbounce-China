@@ -18,13 +18,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: gradle
       - name: Grant all permissions for theme
         run: sudo chmod -R 777 theme
       - uses: burrunan/gradle-cache-action@v1
         name: Build
         with:
           job-id: jdk17
-          arguments: genSources build --build-cache
+          arguments: genSources build
           gradle-version: wrapper
       - name: Upload LiquidBounce Nextgen
         uses: actions/upload-artifact@v2
