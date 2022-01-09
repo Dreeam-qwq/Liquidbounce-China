@@ -25,7 +25,7 @@ jobs:
         name: Build
         with:
           job-id: jdk17
-          arguments: genSources build --parallel -max-workers
+          arguments: genSources build --parallel --max-workers
           gradle-version: wrapper
       - name: Upload LiquidBounce Nextgen
         uses: actions/upload-artifact@v2
