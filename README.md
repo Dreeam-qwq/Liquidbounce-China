@@ -11,7 +11,7 @@
 </div>
 <div align="center">
 
-[中文水影官网](https://mctest.go176.net)
+[中文水影官网](https://mctest.go176.net)(暂未开放)
 </div>
 
 水影是一个免费开源并基于Mixin的注入式黑客端, 使用Fabric API. 
@@ -45,7 +45,7 @@
 
 ## 外部依赖库
 ### Mixins
-Mixins can be used to modify classes at runtime before they are loaded. LiquidBounce uses it to inject its code into the Minecraft client. This way, none of Mojang's copyrighted code is shipped. If you want to learn more about it, check out its [Documentation](https://docs.spongepowered.org/5.1.0/en/plugin/internals/mixins.html).
+Mixins can be used to modify classes at runtime before they are loaded. LiquidBounce uses it to inject its code into the Minecraft client. This way, none of Mojang's copyrighted code is shipped. If you want to learn more about it, check out its [文档](https://docs.spongepowered.org/5.1.0/en/plugin/internals/mixins.html).
 
 ## 贡献
 我们感谢贡献. 因此如果你想支持我们, 欢迎修改水影的源码并提交PR.
