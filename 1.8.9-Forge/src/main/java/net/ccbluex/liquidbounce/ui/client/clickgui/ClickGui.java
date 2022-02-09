@@ -60,11 +60,11 @@ public class ClickGui extends GuiScreen {
 
         yPos += 20;
 
-        panels.add(new Panel("目标", 100, yPos, width, height, false) {
+        panels.add(new Panel("Targets", 100, yPos, width, height, false) {
 
             @Override
             public void setupItems() {
-                getElements().add(new ButtonElement("玩家") {
+                getElements().add(new ButtonElement("Players") {
 
                     @Override
                     public void createButton(String displayName) {
@@ -74,7 +74,7 @@ public class ClickGui extends GuiScreen {
 
                     @Override
                     public String getDisplayName() {
-                        displayName = "玩家";
+                        displayName = "Players";
                         color = EntityUtils.targetPlayer ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                         return super.getDisplayName();
                     }
@@ -83,14 +83,14 @@ public class ClickGui extends GuiScreen {
                     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
                         if (mouseButton == 0 && isHovering(mouseX, mouseY) && isVisible()) {
                             EntityUtils.targetPlayer = !EntityUtils.targetPlayer;
-                            displayName = "玩家";
+                            displayName = "Players";
                             color = EntityUtils.targetPlayer ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                             mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
                         }
                     }
                 });
 
-                getElements().add(new ButtonElement("生物") {
+                getElements().add(new ButtonElement("Mobs") {
 
                     @Override
                     public void createButton(String displayName) {
@@ -100,7 +100,7 @@ public class ClickGui extends GuiScreen {
 
                     @Override
                     public String getDisplayName() {
-                        displayName = "生物";
+                        displayName = "Mobs";
                         color = EntityUtils.targetMobs ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                         return super.getDisplayName();
                     }
@@ -109,14 +109,14 @@ public class ClickGui extends GuiScreen {
                     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
                         if (mouseButton == 0 && isHovering(mouseX, mouseY) && isVisible()) {
                             EntityUtils.targetMobs = !EntityUtils.targetMobs;
-                            displayName = "生物";
+                            displayName = "Mobs";
                             color = EntityUtils.targetMobs ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                             mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
                         }
                     }
                 });
 
-                getElements().add(new ButtonElement("动物") {
+                getElements().add(new ButtonElement("Animals") {
 
                     @Override
                     public void createButton(String displayName) {
@@ -126,7 +126,7 @@ public class ClickGui extends GuiScreen {
 
                     @Override
                     public String getDisplayName() {
-                        displayName = "动物";
+                        displayName = "Animals";
                         color = EntityUtils.targetAnimals ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                         return super.getDisplayName();
                     }
@@ -135,14 +135,14 @@ public class ClickGui extends GuiScreen {
                     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
                         if (mouseButton == 0 && isHovering(mouseX, mouseY) && isVisible()) {
                             EntityUtils.targetAnimals = !EntityUtils.targetAnimals;
-                            displayName = "Animals动物";
+                            displayName = "Animals";
                             color = EntityUtils.targetAnimals ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                             mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
                         }
                     }
                 });
 
-                getElements().add(new ButtonElement("隐身玩家") {
+                getElements().add(new ButtonElement("Invisible") {
 
                     @Override
                     public void createButton(String displayName) {
@@ -152,7 +152,7 @@ public class ClickGui extends GuiScreen {
 
                     @Override
                     public String getDisplayName() {
-                        displayName = "隐身玩家";
+                        displayName = "Invisible";
                         color = EntityUtils.targetInvisible ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                         return super.getDisplayName();
                     }
@@ -161,14 +161,14 @@ public class ClickGui extends GuiScreen {
                     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
                         if (mouseButton == 0 && isHovering(mouseX, mouseY) && isVisible()) {
                             EntityUtils.targetInvisible = !EntityUtils.targetInvisible;
-                            displayName = "隐身玩家";
+                            displayName = "Invisible";
                             color = EntityUtils.targetInvisible ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                             mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
                         }
                     }
                 });
 
-                getElements().add(new ButtonElement("死亡玩家") {
+                getElements().add(new ButtonElement("Dead") {
 
                     @Override
                     public void createButton(String displayName) {
@@ -178,7 +178,7 @@ public class ClickGui extends GuiScreen {
 
                     @Override
                     public String getDisplayName() {
-                        displayName = "死亡玩家";
+                        displayName = "Dead";
                         color = EntityUtils.targetDead ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                         return super.getDisplayName();
                     }
@@ -187,7 +187,7 @@ public class ClickGui extends GuiScreen {
                     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
                         if (mouseButton == 0 && isHovering(mouseX, mouseY) && isVisible()) {
                             EntityUtils.targetDead = !EntityUtils.targetDead;
-                            displayName = "死亡玩家";
+                            displayName = "Dead";
                             color = EntityUtils.targetDead ? ClickGUI.generateColor().getRGB() : Integer.MAX_VALUE;
                             mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
                         }

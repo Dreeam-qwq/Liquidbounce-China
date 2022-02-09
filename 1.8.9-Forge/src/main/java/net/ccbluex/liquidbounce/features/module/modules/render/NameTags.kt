@@ -26,7 +26,7 @@ import org.lwjgl.opengl.GL11.*
 import java.awt.Color
 import kotlin.math.roundToInt
 
-@ModuleInfo(name = "头衔标签", description = "Changes the scale of the nametags so you can always read them.", category = ModuleCategory.RENDER)
+@ModuleInfo(name = "NameTags", description = "Changes the scale of the nametags so you can always read them.", category = ModuleCategory.RENDER)
 class NameTags : Module() {
     private val healthValue = BoolValue("Health", true)
     private val pingValue = BoolValue("Ping", true)

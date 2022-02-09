@@ -38,7 +38,7 @@ public class GuiAdd extends GuiScreen {
     private GuiTextField username;
     private GuiPasswordField password;
 
-    private String status = "§7闲置中...";
+    private String status = "§7Idle...";
 
     public GuiAdd(final GuiAltManager gui) {
         this.prevGui = gui;

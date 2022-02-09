@@ -13,7 +13,7 @@ import net.ccbluex.liquidbounce.features.module.ModuleCategory
 import net.ccbluex.liquidbounce.features.module.ModuleInfo
 import net.ccbluex.liquidbounce.utils.MovementUtils
 
-@ModuleInfo(name = "蜂鸟飞行", description = "Allows you to freely move in mid air.", category = ModuleCategory.MOVEMENT)
+@ModuleInfo(name = "Strafe", description = "Allows you to freely move in mid air.", category = ModuleCategory.MOVEMENT)
 class Strafe : Module() {
 
     @EventTarget

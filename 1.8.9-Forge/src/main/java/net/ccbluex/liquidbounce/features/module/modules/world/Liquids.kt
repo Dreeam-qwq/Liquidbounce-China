@@ -9,5 +9,5 @@ import net.ccbluex.liquidbounce.features.module.Module
 import net.ccbluex.liquidbounce.features.module.ModuleCategory
 import net.ccbluex.liquidbounce.features.module.ModuleInfo
 
-@ModuleInfo(name = "液体固化", description = "Allows you to interact with liquids.", category = ModuleCategory.WORLD)
+@ModuleInfo(name = "Liquids", description = "Allows you to interact with liquids.", category = ModuleCategory.WORLD)
 class Liquids : Module()

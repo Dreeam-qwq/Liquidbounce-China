@@ -18,7 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 
-@ModuleInfo(name = "冰上漂", description = "Allows you to walk faster on ice.", category = ModuleCategory.MOVEMENT)
+@ModuleInfo(name = "IceSpeed", description = "Allows you to walk faster on ice.", category = ModuleCategory.MOVEMENT)
 public class IceSpeed extends Module {
 
     private final ListValue modeValue = new ListValue("Mode", new String[] {"NCP", "AAC", "Spartan"}, "NCP");

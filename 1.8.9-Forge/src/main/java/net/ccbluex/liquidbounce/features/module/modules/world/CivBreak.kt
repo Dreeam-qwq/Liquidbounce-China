@@ -22,7 +22,7 @@ import net.minecraft.util.BlockPos
 import net.minecraft.util.EnumFacing
 import java.awt.Color
 
-@ModuleInfo(name = "辅助挖掘", description = "Allows you to break blocks instantly.", category = ModuleCategory.WORLD)
+@ModuleInfo(name = "CivBreak", description = "Allows you to break blocks instantly.", category = ModuleCategory.WORLD)
 class CivBreak : Module() {
 
     private var blockPos: BlockPos? = null

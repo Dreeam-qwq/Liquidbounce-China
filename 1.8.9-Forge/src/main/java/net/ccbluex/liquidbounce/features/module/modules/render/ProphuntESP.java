@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@ModuleInfo(name = "预言家透视", description = "Allows you to see disguised players in PropHunt.", category = ModuleCategory.RENDER)
+@ModuleInfo(name = "ProphuntESP", description = "Allows you to see disguised players in PropHunt.", category = ModuleCategory.RENDER)
 public class ProphuntESP extends Module {
     public final Map<BlockPos, Long> blocks = new HashMap<>();
 

@@ -18,7 +18,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import org.lwjgl.input.Mouse;
 
-@ModuleInfo(name = "选择玩家", description = "Allows you to add a player as a friend by right clicking him.", category = ModuleCategory.MISC)
+@ModuleInfo(name = "MidClick", description = "Allows you to add a player as a friend by right clicking him.", category = ModuleCategory.MISC)
 public class MidClick extends Module {
 
     private boolean wasDown;

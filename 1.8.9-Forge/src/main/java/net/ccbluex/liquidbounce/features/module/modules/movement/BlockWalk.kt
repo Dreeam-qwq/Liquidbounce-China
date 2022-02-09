@@ -14,7 +14,7 @@ import net.ccbluex.liquidbounce.value.BoolValue
 import net.minecraft.init.Blocks
 import net.minecraft.util.AxisAlignedBB
 
-@ModuleInfo(name = "半砖行走", description = "Allows you to walk on non-fullblock blocks.", category = ModuleCategory.MOVEMENT)
+@ModuleInfo(name = "BlockWalk", description = "Allows you to walk on non-fullblock blocks.", category = ModuleCategory.MOVEMENT)
 class BlockWalk : Module() {
     private val cobwebValue = BoolValue("Cobweb", true)
     private val snowValue = BoolValue("Snow", true)

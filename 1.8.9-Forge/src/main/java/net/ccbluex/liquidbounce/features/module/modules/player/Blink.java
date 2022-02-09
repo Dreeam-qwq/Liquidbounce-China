@@ -29,7 +29,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import static org.lwjgl.opengl.GL11.*;
 
-@ModuleInfo(name = "闪烁", description = "Suspends all movement packets.", category = ModuleCategory.PLAYER)
+@ModuleInfo(name = "Blink", description = "Suspends all movement packets.", category = ModuleCategory.PLAYER)
 public class Blink extends Module {
 
     private final LinkedBlockingQueue<Packet> packets = new LinkedBlockingQueue<>();
