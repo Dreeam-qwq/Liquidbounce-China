@@ -1,4 +1,4 @@
-name: Build
+name: Build Liquidbounce Nextgen
 
 on:
   push:
@@ -18,17 +18,28 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: gradle
       - name: Grant all permissions for theme
         run: sudo chmod -R 777 theme
       - uses: burrunan/gradle-cache-action@v1
         name: Build
         with:
           job-id: jdk17
-          arguments: genSources build --parallel
+          arguments: genSources build
           gradle-version: wrapper
-      - name: Upload LiquidBounce Nextgen
-        uses: actions/upload-artifact@v2
-        with:
-          name: LiquidBounce-Nextgen
-          path: build/libs
+      - name: Upload artifact
+        run: |
+          function gradleprop {
+              grep "${1}" gradle.properties|cut -d'=' -f2
+          }
+          export LB_VERSION=$(gradleprop 'mod_version')
+          export MINECRAFT_VERSION=$(gradleprop 'minecraft_version')
+          export LOADER_VERSION=$(gradleprop 'loader_version')
+          export FABRICAPI_VERSION=$(gradleprop 'fabric_version')
+          export KOTLIN_VERSION=$(gradleprop 'kotlin_version')
+          export FABRIC_KOTLIN_VERSION=$(gradleprop 'fabric_kotlin_version')
+          echo Version: $LB_VERSION, Minecraft: $MINECRAFT_VERSION
+          cd build/libs
+          export JAR=$(find . -regex '.*liquidbounce-[0-9|.]*\.jar')
+          cp $JAR liquidbounce.jar
+          zip -r liquidbounce.zip liquidbounce.jar ../../zip_include
+          md5sum liquidbounce.zip
