@@ -54,7 +54,7 @@ object LiquidBounce : Listenable {
      */
     const val CLIENT_NAME = "LiquidBounce"
     const val CLIENT_VERSION = "1.0.0"
-    const val CLIENT_AUTHOR = "CCBlueX"
+    const val CLIENT_AUTHOR = "CCBlueX, go176"
     const val CLIENT_CLOUD = "https://cloud.liquidbounce.net/LiquidBounce"
 
     /**
@@ -67,8 +67,8 @@ object LiquidBounce : Listenable {
      */
     val startHandler = handler<ClientStartEvent> {
         runCatching {
-            logger.info("Launching $CLIENT_NAME v$CLIENT_VERSION by $CLIENT_AUTHOR")
-            logger.debug("Loading from cloud: '$CLIENT_CLOUD'")
+            logger.info("正在启动 $CLIENT_NAME v$CLIENT_VERSION by $CLIENT_AUTHOR")
+            logger.debug("加载云端数据: '$CLIENT_CLOUD'")
 
             // Load mappings
             McMappings.load()
