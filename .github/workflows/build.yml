@@ -7,6 +7,7 @@ on:
 jobs:
   build_1_8_9:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.commits[0].message, '[ci-skip]')"
     steps:
       - name: Checkout repository and submodules
         uses: actions/checkout@v2
@@ -37,6 +38,7 @@ jobs:
 
   build_1_12_2:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.commits[0].message, '[ci-skip]')"
     steps:
       - name: Checkout repository and submodules
         uses: actions/checkout@v2
