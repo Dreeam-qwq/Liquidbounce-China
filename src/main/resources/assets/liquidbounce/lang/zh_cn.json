@@ -15,7 +15,7 @@
   "liquidbounce.commandManager.parameterRequired": "命令需要参数 \"%s\" .",
   "liquidbounce.commandManager.unknownParameter": "未知的命令参数 \"%s\" .",
   "liquidbounce.commandManager.commandNotExecutable": "无法执行命令 \"%s\" .",
-  "liquidbounce.commandManager.invalidParameterValue": "Invalid argument \"%s\" for parameter \"%s\". %s",
+  "liquidbounce.commandManager.invalidParameterValue": "参数 \"%s\" 的参数 \"%s\". %s 未知",
 
   "liquidbounce.command.bind.description": "绑定模块到一个快捷键.",
   "liquidbounce.command.bind.parameter.name.description": "模块的名字.",
@@ -42,7 +42,7 @@
   "liquidbounce.command.binds.subcommand.list.parameter.page.description": "展示的页数.",
   "liquidbounce.command.binds.subcommand.list.result.noBindings": "找不到绑定快捷键.",
   "liquidbounce.command.binds.subcommand.list.result.pageNumberTooLarge": "你所输入的页数超出了最大页数 %d 页.",
-  "liquidbounce.command.binds.subcommand.list.result.bindings": "B绑定快捷键inds",
+  "liquidbounce.command.binds.subcommand.list.result.bindings": "绑定快捷键",
   "liquidbounce.command.binds.subcommand.list.result.page": "页数: %s",
 
   "liquidbounce.command.binds.subcommand.clear.description": "清空所有绑定快捷键.",
@@ -171,9 +171,9 @@
   "liquidbounce.command.remoteview.description": "允许你查看其他玩家的视角.",
   "liquidbounce.command.remoteview.subcommand.view.result.viewPlayer": "你正在查看 %s 的视角.",
   "liquidbounce.command.remoteview.subcommand.view.result.caseOff": "执行 \".rv off\" 去停止查看 %s 的视角",
-  "liquidbounce.command.remoteview.subcommand.view.result.alreadyViewing": "You are already viewing %s.",
-  "liquidbounce.command.remoteview.subcommand.off.result.off": "Successfully stopped remote viewing %s.",
-  "liquidbounce.command.remoteview.subcommand.off.result.alreadyOff": "You are not remote viewing anyone.",
+  "liquidbounce.command.remoteview.subcommand.view.result.alreadyViewing": "你已经在查看 %s 的视角.",
+  "liquidbounce.command.remoteview.subcommand.off.result.off": "成功停止查看 %s 的远程视角.",
+  "liquidbounce.command.remoteview.subcommand.off.result.alreadyOff": "已成功停止查看远程视角.",
 
   "liquidbounce.liquidchat.states.connecting": "正在连接聊天服务器...",
   "liquidbounce.liquidchat.states.connected": "成功连接聊天服务器!",
@@ -230,7 +230,7 @@
 
   "liquidbounce.module.noPitchLimit.description": "允许你不受限制的旋转视角.",
 
-  "liquidbounce.module.pingSpoof.description": "Spoofs your ping to a specified value.",
+  "liquidbounce.module.pingSpoof.description": "自定义一个虚假的Ping值.",
   "liquidbounce.module.pingSpoof.noSingleplayer": "无法在单人模式中开启 %s .",
 
   "liquidbounce.module.plugins.description": "允许你查看服务器的插件.",
@@ -270,7 +270,7 @@
 
   "liquidbounce.module.autoWalk.description": "允许你自动向前走.",
 
-  "liquidbounce.module.blink.description": "Makes it look as if you were teleporting to other players.",
+  "liquidbounce.module.blink.description": "允许你看起来像是从一个地方闪现到另外一个地方.",
 
   "liquidbounce.module.eagle.description": "自动在方块边缘潜行 (别名. FastBridge).",
 
@@ -378,7 +378,7 @@
 
   "liquidbounce.module.noBob.description": "禁止气泡动画效果.",
 
-  "liquidbounce.module.noHurtCam.description": "Disables the hurt cam effect when getting hurt.",
+  "liquidbounce.module.noHurtCam.description": "在你受到伤害的时候禁止受伤动画.",
 
   "liquidbounce.module.noSignRender.description": "不渲染牌子上的字.",
 
@@ -412,10 +412,10 @@
 
   "liquidbounce.module.sleepWalker.description": "允许你在睡觉时走动, 同时减小你的碰撞箱.",
 
-  "liquidbounce.module.dankBobbing.description": "Adds more bobbing effect.",
+  "liquidbounce.module.dankBobbing.description": "加入更多的气泡动画效果.",
   
   "liquidbounce.module.projectilePuncher.description": "Shoots back incoming projectiles around you.",
   
-  "liquidbounce.module.autoPot.description": "Automatically throws healing potions whenever your health is low."
+  "liquidbounce.module.autoPot.description": "当血量低时自动使用喷溅治疗药水."
 
 }
