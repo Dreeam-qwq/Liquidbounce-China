@@ -374,7 +374,7 @@
 
   "liquidbounce.module.holeEsp.description": "检测并显示适合打水晶PVP的坑.",
 
-  "liquidbounce.module.mobOwners.description": "Shows you from which player a tamable entity or projectile belongs to.",
+  "liquidbounce.module.mobOwners.description": "显示已驯养生物和投掷物的主人.",
 
   "liquidbounce.module.noBob.description": "禁止气泡动画效果.",
 
@@ -400,7 +400,7 @@
 
   "liquidbounce.module.fucker.description": "自动破坏/使用你周围的特定方块.",
 
-  "liquidbounce.module.ignite.description": "Automatically sets targets around you on fire.",
+  "liquidbounce.module.ignite.description": "自动点燃在你周围的敌人.",
 
   "liquidbounce.module.scaffold.description": "自动在脚下搭方块.",
 
@@ -414,7 +414,7 @@
 
   "liquidbounce.module.dankBobbing.description": "加入更多的气泡动画效果.",
   
-  "liquidbounce.module.projectilePuncher.description": "Shoots back incoming projectiles around you.",
+  "liquidbounce.module.projectilePuncher.description": "自动把射向你的火球或潜影盒子弹打回去.",
   
   "liquidbounce.module.autoPot.description": "当血量低时自动使用喷溅治疗药水."
 
