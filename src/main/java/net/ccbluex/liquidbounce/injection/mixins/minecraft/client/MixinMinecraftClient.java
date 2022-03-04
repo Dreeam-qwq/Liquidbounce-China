@@ -101,13 +101,13 @@ public abstract class MixinMinecraftClient {
 
     /**
      * Modify window title to our client title.
-     * Example: LiquidBounce v1.0.0 | 1.16.3
+     * Example: LiquidBounce v1.0.0 | 1.18.1
      *
      * @param callback our window title
      */
     @Inject(method = "getWindowTitle", at = @At("HEAD"), cancellable = true)
     private void getClientTitle(CallbackInfoReturnable<String> callback) {
-        LiquidBounce.INSTANCE.getLogger().debug("Modifying window title");
+        LiquidBounce.INSTANCE.getLogger().debug("修改窗口标题中...");
 
         final StringBuilder titleBuilder = new StringBuilder(LiquidBounce.CLIENT_NAME);
         titleBuilder.append(" v");
