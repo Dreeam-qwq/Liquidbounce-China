@@ -39,21 +39,28 @@ import kotlin.math.atan2
 import kotlin.math.sqrt
 import kotlin.math.truncate
 
-@ModuleInfo(name = "Tower", description = "Automatically builds a tower beneath you.", category = ModuleCategory.WORLD, keyBind = Keyboard.KEY_O)
+@ModuleInfo(
+    name = "Tower",
+    description = "Automatically builds a tower beneath you.",
+    category = ModuleCategory.WORLD,
+    keyBind = Keyboard.KEY_O
+)
 class Tower : Module() {
     /**
      * OPTIONS
      */
-    private val modeValue = ListValue("Mode", arrayOf(
-            "Jump", "Motion", "ConstantMotion", "MotionTP", "Packet", "Teleport", "AAC3.3.9", "AAC3.6.4"
-    ), "Motion")
-    private val autoBlockValue = BoolValue("AutoBlock", true)
-    private val stayAutoBlock = BoolValue("StayAutoBlock", false)
+    private val modeValue = ListValue(
+        "Mode",
+        arrayOf("Jump", "Motion", "ConstantMotion", "MotionTP", "Packet", "Teleport", "AAC3.3.9", "AAC3.6.4"),
+        "Motion"
+    )
+    private val autoBlockValue = ListValue("AutoBlock", arrayOf("Off", "Pick", "Spoof", "Switch"), "Spoof")
     private val swingValue = BoolValue("Swing", true)
     private val stopWhenBlockAbove = BoolValue("StopWhenBlockAbove", false)
     private val rotationsValue = BoolValue("Rotations", true)
     private val keepRotationValue = BoolValue("KeepRotation", false)
     private val onJumpValue = BoolValue("OnJump", false)
+    private val matrixValue = BoolValue("Matrix", false)
     private val placeModeValue = ListValue("PlaceTiming", arrayOf("Pre", "Post"), "Post")
     private val timerValue = FloatValue("Timer", 1f, 0.01f, 10f)
 
@@ -89,6 +96,14 @@ class Tower : Module() {
 
     // AutoBlock
     private var slot = 0
+
+    override fun onEnable() {
+        val thePlayer = mc.thePlayer ?: return
+
+        slot = thePlayer.inventory.currentItem
+
+    }
+
     override fun onDisable() {
         val thePlayer = mc.thePlayer ?: return
 
@@ -121,14 +136,25 @@ class Tower : Module() {
             placeInfo = null
             timer.update()
 
-            val update = if (autoBlockValue.get()) {
-                InventoryUtils.findAutoBlockBlock() != -1 || thePlayer.heldItem != null && classProvider.isItemBlock(thePlayer.heldItem!!.item)
+            val update = if (!autoBlockValue.get().equals("Off", ignoreCase = true)) {
+                InventoryUtils.findAutoBlockBlock() != -1 || thePlayer.heldItem != null && classProvider.isItemBlock(
+                    thePlayer.heldItem!!.item
+                )
             } else {
                 thePlayer.heldItem != null && classProvider.isItemBlock(thePlayer.heldItem!!.item)
             }
 
             if (update) {
-                if (!stopWhenBlockAbove.get() || classProvider.isBlockAir(getBlock(WBlockPos(thePlayer.posX, thePlayer.posY + 2, thePlayer.posZ)))) {
+                if (!stopWhenBlockAbove.get() || classProvider.isBlockAir(
+                        getBlock(
+                            WBlockPos(
+                                thePlayer.posX,
+                                thePlayer.posY + 2,
+                                thePlayer.posZ
+                            )
+                        )
+                    )
+                ) {
                     move()
                 }
                 val blockPos = WBlockPos(thePlayer.posX, thePlayer.posY - 1.0, thePlayer.posZ)
@@ -177,10 +203,18 @@ class Tower : Module() {
             }
             "packet" -> if (thePlayer.onGround && timer.hasTimePassed(2)) {
                 fakeJump()
-                mc.netHandler.addToSendQueue(classProvider.createCPacketPlayerPosition(thePlayer.posX,
-                        thePlayer.posY + 0.42, thePlayer.posZ, false))
-                mc.netHandler.addToSendQueue(classProvider.createCPacketPlayerPosition(thePlayer.posX,
-                        thePlayer.posY + 0.753, thePlayer.posZ, false))
+                mc.netHandler.addToSendQueue(
+                    classProvider.createCPacketPlayerPosition(
+                        thePlayer.posX,
+                        thePlayer.posY + 0.42, thePlayer.posZ, false
+                    )
+                )
+                mc.netHandler.addToSendQueue(
+                    classProvider.createCPacketPlayerPosition(
+                        thePlayer.posX,
+                        thePlayer.posY + 0.753, thePlayer.posZ, false
+                    )
+                )
                 thePlayer.setPosition(thePlayer.posX, thePlayer.posY + 1.0, thePlayer.posZ)
                 timer.reset()
             }
@@ -190,7 +224,11 @@ class Tower : Module() {
                 }
                 if ((thePlayer.onGround || !teleportGroundValue.get()) && timer.hasTimePassed(teleportDelayValue.get())) {
                     fakeJump()
-                    thePlayer.setPositionAndUpdate(thePlayer.posX, thePlayer.posY + teleportHeightValue.get(), thePlayer.posZ)
+                    thePlayer.setPositionAndUpdate(
+                        thePlayer.posX,
+                        thePlayer.posY + teleportHeightValue.get(),
+                        thePlayer.posZ
+                    )
                     timer.reset()
                 }
             }
@@ -202,7 +240,11 @@ class Tower : Module() {
                 }
                 if (thePlayer.posY > jumpGround + constantMotionJumpGroundValue.get()) {
                     fakeJump()
-                    thePlayer.setPosition(thePlayer.posX, truncate(thePlayer.posY), thePlayer.posZ) // TODO: toInt() required?
+                    thePlayer.setPosition(
+                        thePlayer.posX,
+                        truncate(thePlayer.posY),
+                        thePlayer.posZ
+                    ) // TODO: toInt() required?
                     thePlayer.motionY = constantMotionValue.get().toDouble()
                     jumpGround = thePlayer.posY
                 }
@@ -236,32 +278,55 @@ class Tower : Module() {
         val thePlayer = mc.thePlayer ?: return
 
         // AutoBlock
-        var blockSlot = -1
         var itemStack = thePlayer.heldItem
         if (itemStack == null || !classProvider.isItemBlock(itemStack.item) || classProvider.isBlockBush(itemStack.item?.asItemBlock()?.block)) {
-            if (!autoBlockValue.get()) return
 
-            blockSlot = InventoryUtils.findAutoBlockBlock()
-            if (blockSlot == -1) return
+            val blockSlot = InventoryUtils.findAutoBlockBlock()
 
-            mc.netHandler.addToSendQueue(classProvider.createCPacketHeldItemChange(blockSlot - 36))
+            if (blockSlot == -1)
+                return
+
+            when (autoBlockValue.get()) {
+                "Off" -> return
+                "Pick" -> {
+                    mc.thePlayer!!.inventory.currentItem = blockSlot - 36
+                    mc.playerController.updateController()
+                }
+                "Spoof" -> {
+                    if (blockSlot - 36 != slot) {
+                        mc.netHandler.addToSendQueue(classProvider.createCPacketHeldItemChange(blockSlot - 36))
+                    }
+                }
+                "Switch" -> {
+                    if (blockSlot - 36 != slot) {
+                        mc.netHandler.addToSendQueue(classProvider.createCPacketHeldItemChange(blockSlot - 36))
+                    }
+                }
+            }
             itemStack = thePlayer.inventoryContainer.getSlot(blockSlot).stack
         }
 
         // Place block
-        if (mc.playerController.onPlayerRightClick(thePlayer, mc.theWorld!!, itemStack!!, placeInfo!!.blockPos, placeInfo!!.enumFacing, placeInfo!!.vec3)) {
+        if (mc.playerController.onPlayerRightClick(
+                thePlayer,
+                mc.theWorld!!,
+                itemStack!!,
+                placeInfo!!.blockPos,
+                placeInfo!!.enumFacing,
+                placeInfo!!.vec3
+            )
+        ) {
             if (swingValue.get()) {
                 thePlayer.swingItem()
             } else {
                 mc.netHandler.addToSendQueue(classProvider.createCPacketAnimation())
             }
         }
-        placeInfo = null
-
-        // Switch back to old slot when using auto block
-        if (!stayAutoBlock.get() && blockSlot >= 0) {
-            mc.netHandler.addToSendQueue(classProvider.createCPacketHeldItemChange(thePlayer.inventory.currentItem))
+        if (autoBlockValue.get().equals("Switch", true)) {
+            if (slot != mc.thePlayer!!.inventory.currentItem)
+                mc.netHandler.addToSendQueue(classProvider.createCPacketHeldItemChange(mc.thePlayer!!.inventory.currentItem))
         }
+        placeInfo = null
     }
 
     /**
@@ -285,17 +350,28 @@ class Tower : Module() {
 
             val dirVec = WVec3(side.directionVec)
 
+            val matrix = matrixValue.get()
             var xSearch = 0.1
             while (xSearch < 0.9) {
                 var ySearch = 0.1
                 while (ySearch < 0.9) {
                     var zSearch = 0.1
                     while (zSearch < 0.9) {
-                        val posVec = WVec3(blockPosition).addVector(xSearch, ySearch, zSearch)
+                        val posVec = WVec3(blockPosition).addVector(
+                            if (matrix) 0.5 else xSearch,
+                            if (matrix) 0.5 else ySearch,
+                            if (matrix) 0.5 else zSearch
+                        )
+
                         val distanceSqPosVec = eyesPos.squareDistanceTo(posVec)
                         val hitVec = posVec.add(WVec3(dirVec.xCoord * 0.5, dirVec.yCoord * 0.5, dirVec.zCoord * 0.5))
-                        if (eyesPos.squareDistanceTo(hitVec) > 18.0 || distanceSqPosVec > eyesPos.squareDistanceTo(posVec.add(dirVec)) || mc.theWorld!!.rayTraceBlocks(eyesPos, hitVec, stopOnLiquid = false,
-                                        ignoreBlockWithoutBoundingBox = true, returnLastUncollidableBlock = false) != null) {
+                        if (eyesPos.squareDistanceTo(hitVec) > 18.0 || distanceSqPosVec > eyesPos.squareDistanceTo(
+                                posVec.add(dirVec)
+                            ) || mc.theWorld!!.rayTraceBlocks(
+                                eyesPos, hitVec, stopOnLiquid = false,
+                                ignoreBlockWithoutBoundingBox = true, returnLastUncollidableBlock = false
+                            ) != null
+                        ) {
                             zSearch += 0.1
                             continue
                         }
@@ -307,19 +383,26 @@ class Tower : Module() {
                         val diffXZ = sqrt(diffX * diffX + diffZ * diffZ)
 
                         val rotation = Rotation(
-                                WMathHelper.wrapAngleTo180_float(Math.toDegrees(atan2(diffZ, diffX)).toFloat() - 90f),
-                                WMathHelper.wrapAngleTo180_float((-Math.toDegrees(atan2(diffY, diffXZ))).toFloat())
+                            WMathHelper.wrapAngleTo180_float(Math.toDegrees(atan2(diffZ, diffX)).toFloat() - 90f),
+                            WMathHelper.wrapAngleTo180_float((-Math.toDegrees(atan2(diffY, diffXZ))).toFloat())
                         )
                         val rotationVector = RotationUtils.getVectorForRotation(rotation)
-                        val vector = eyesPos.addVector(rotationVector.xCoord * 4, rotationVector.yCoord * 4, rotationVector.zCoord * 4)
-                        val obj = mc.theWorld!!.rayTraceBlocks(eyesPos, vector, stopOnLiquid = false,
-                                ignoreBlockWithoutBoundingBox = false, returnLastUncollidableBlock = true)
+                        val vector = eyesPos.addVector(
+                            rotationVector.xCoord * distanceSqPosVec,
+                            rotationVector.yCoord * distanceSqPosVec,
+                            rotationVector.zCoord * distanceSqPosVec
+                        )
+                        val obj = mc.theWorld!!.rayTraceBlocks(
+                            eyesPos, vector, stopOnLiquid = false,
+                            ignoreBlockWithoutBoundingBox = false, returnLastUncollidableBlock = true
+                        )
                         if (!(obj!!.typeOfHit == IMovingObjectPosition.WMovingObjectType.BLOCK && obj.blockPos == neighbor)) {
                             zSearch += 0.1
                             continue
                         }
                         if (placeRotation == null || RotationUtils.getRotationDifference(rotation) <
-                                RotationUtils.getRotationDifference(placeRotation.rotation)) placeRotation = PlaceRotation(PlaceInfo(neighbor, side.opposite, hitVec), rotation)
+                            RotationUtils.getRotationDifference(placeRotation.rotation)
+                        ) placeRotation = PlaceRotation(PlaceInfo(neighbor, side.opposite, hitVec), rotation)
                         zSearch += 0.1
                     }
                     ySearch += 0.1
@@ -361,15 +444,19 @@ class Tower : Module() {
             val info = "Blocks: §7$blocksAmount"
             val scaledResolution = classProvider.createScaledResolution(mc)
 
-            RenderUtils.drawBorderedRect(scaledResolution.scaledWidth / 2 - 2.toFloat(),
-                    scaledResolution.scaledHeight / 2 + 5.toFloat(),
-                    scaledResolution.scaledWidth / 2 + Fonts.font40.getStringWidth(info) + 2.toFloat(),
-                    scaledResolution.scaledHeight / 2 + 16.toFloat(), 3f, Color.BLACK.rgb, Color.BLACK.rgb)
+            RenderUtils.drawBorderedRect(
+                scaledResolution.scaledWidth / 2 - 2.toFloat(),
+                scaledResolution.scaledHeight / 2 + 5.toFloat(),
+                scaledResolution.scaledWidth / 2 + Fonts.font40.getStringWidth(info) + 2.toFloat(),
+                scaledResolution.scaledHeight / 2 + 16.toFloat(), 3f, Color.BLACK.rgb, Color.BLACK.rgb
+            )
 
             classProvider.getGlStateManager().resetColor()
 
-            Fonts.font40.drawString(info, scaledResolution.scaledWidth / 2.toFloat(),
-                    scaledResolution.scaledHeight / 2 + 7.toFloat(), Color.WHITE.rgb)
+            Fonts.font40.drawString(
+                info, scaledResolution.scaledWidth / 2.toFloat(),
+                scaledResolution.scaledHeight / 2 + 7.toFloat(), Color.WHITE.rgb
+            )
             GL11.glPopMatrix()
         }
     }
