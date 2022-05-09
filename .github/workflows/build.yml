@@ -1,0 +1,28 @@
+name: Build LiquidBounce b72
+
+on:
+  push:
+    branches: [ b72 ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.commits[0].message, '[ci-skip]')"
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2.4.2
+        with:
+          submodules: recursive
+      - name: Setup java
+        uses: actions/setup-java@v3.3.0
+        with:
+          distribution: "adopt"
+          java-version: 8
+          cache: "gradle"
+      - name: Build
+        run: ./gradlew build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: LiquidBounce-b72
+          path: build/libs
