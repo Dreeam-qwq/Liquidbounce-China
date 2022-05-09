@@ -20,9 +20,9 @@ jobs:
           java-version: 8
           cache: "gradle"
       - name: Build
-        run: ./gradlew build
+        run: gradlew build
       - name: Upload artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           name: LiquidBounce-b72
-          path: build/libs
+          path: 1.8.9-Forge/build/libs
