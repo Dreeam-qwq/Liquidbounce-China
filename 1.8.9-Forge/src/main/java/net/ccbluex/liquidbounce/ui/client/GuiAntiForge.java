@@ -29,7 +29,7 @@ public class GuiAntiForge extends GuiScreen {
 
     @Override
     public void initGui() {
-        buttonList.add(enabledButton = new GuiButton(1, width / 2 - 100, height / 4 + 35, "Enabled (" + (AntiForge.enabled ? "On" : "Off") + ")"));
+        buttonList.add(enabledButton = new GuiButton(1, width / 2 - 100, height / 4 + 35, "开启 (" + (AntiForge.enabled ? "On" : "Off") + ")"));
         buttonList.add(fmlButton = new GuiButton(2, width / 2 - 100, height / 4 + 50 + 25, "Block FML (" + (AntiForge.blockFML ? "On" : "Off") + ")"));
         buttonList.add(proxyButton = new GuiButton(3, width / 2 - 100, height / 4 + 50 + 25 * 2, "Block FML Proxy Packet (" + (AntiForge.blockProxyPacket ? "On" : "Off") + ")"));
         buttonList.add(payloadButton = new GuiButton(4, width / 2 - 100, height / 4 + 50 + 25 * 3, "Block Payload Packets (" + (AntiForge.blockPayloadPackets ? "On" : "Off") + ")"));
@@ -42,7 +42,7 @@ public class GuiAntiForge extends GuiScreen {
         switch(button.id) {
             case 1:
                 AntiForge.enabled = !AntiForge.enabled;
-                enabledButton.displayString = "Enabled (" + (AntiForge.enabled ? "On" : "Off") + ")";
+                enabledButton.displayString = "开启 (" + (AntiForge.enabled ? "On" : "Off") + ")";
                 LiquidBounce.fileManager.saveConfig(LiquidBounce.fileManager.valuesConfig);
                 break;
             case 2:

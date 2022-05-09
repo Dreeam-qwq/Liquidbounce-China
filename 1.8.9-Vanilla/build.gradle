@@ -5,9 +5,10 @@ buildscript {
         mavenLocal()
         mavenCentral()
 
-        maven { url 'https://files.minecraftforge.net/maven' }
+        maven { url 'https://maven.minecraftforge.net/' }
         maven { url 'https://plugins.gradle.org/m2' }
         maven { url 'https://repo.spongepowered.org/maven' }
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -54,7 +55,7 @@ idea {
     }
 }
 
-archivesBaseName = 'LiquidBounce'
+archivesBaseName = 'LiquidBounce China'
 
 minecraft {
     version = '1.8.9'
@@ -83,9 +84,9 @@ dependencies {
     compile 'com.jagrosh:DiscordIPC:0.4'
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlin_version
 
-    implementation 'com.github.TheAltening:API-Java:master-SNAPSHOT'
+    implementation 'com.github.TheAltening:TheAltening4j:d0771f42d3'
     implementation 'com.github.TheAltening:API-Java-AuthLib:-SNAPSHOT'
-    compile 'com.github.TheAltening:API-Java:api-2.0-SNAPSHOT'
+    compile 'com.github.TheAltening:TheAltening4j:api-2.0-22541fa70f-1'
     compile 'com.github.TheAltening:API-Java-AuthLib:-SNAPSHOT'
 
     compile fileTree(include: ['*.jar'], dir: 'libs')

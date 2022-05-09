@@ -1,13 +1,13 @@
 [
   {
     "modid": "liquidbounce",
-    "name": "水影",
+    "name": "中文水影",
     "description": "",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://cn.breeze.asia/liquidbounce/",
+    "url": "https://mctest.go176.net/",
     "updateUrl": "",
-    "authorList": ["CCBlueX,adk"],
+    "authorList": ["CCBlueX, go176"],
     "credits": "",
     "logoFile": "",
     "screenshots": [],

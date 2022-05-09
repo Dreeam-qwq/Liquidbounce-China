@@ -29,7 +29,7 @@ class ScriptCommand(private val commandObject: JSObject) : Command(commandObject
         try {
             events["execute"]?.call(commandObject, args)
         } catch (throwable: Throwable) {
-            ClientUtils.getLogger().error("[脚本接口] 指令 '$command'异常!", throwable)
+            ClientUtils.getLogger().error("[脚本接口] 指令 '$command' 出现异常!", throwable)
         }
     }
 }

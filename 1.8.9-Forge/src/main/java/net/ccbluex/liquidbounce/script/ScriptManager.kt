@@ -69,7 +69,7 @@ class ScriptManager {
         file.copyTo(scriptFile)
 
         loadScript(scriptFile)
-        ClientUtils.getLogger().info("[脚本接口]  成功导入脚本 '${scriptFile.name}'.")
+        ClientUtils.getLogger().info("[脚本接口] 成功导入脚本 '${scriptFile.name}'.")
     }
 
     /**
@@ -81,7 +81,7 @@ class ScriptManager {
         scripts.remove(script)
         script.scriptFile.delete()
 
-        ClientUtils.getLogger().info("[脚本接口]  成功删除脚本 '${script.scriptFile.name}'.")
+        ClientUtils.getLogger().info("[脚本接口] 成功删除脚本 '${script.scriptFile.name}'.")
     }
 
     /**
@@ -93,6 +93,6 @@ class ScriptManager {
         loadScripts()
         enableScripts()
 
-        ClientUtils.getLogger().info("[脚本接口]  成功重载所有脚本.")
+        ClientUtils.getLogger().info("[脚本接口] 成功重载所有脚本.")
     }
 }

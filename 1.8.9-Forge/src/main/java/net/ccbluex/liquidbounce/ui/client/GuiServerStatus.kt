@@ -33,7 +33,7 @@ class GuiServerStatus(private val prevGui: GuiScreen) : GuiScreen() {
         Gui.drawRect(width / 2 - 115, i - 5, width / 2 + 115, height / 4 + 43 + if (status.keys.isEmpty()) 10 else status.keys.size * Fonts.font40.FONT_HEIGHT, Integer.MIN_VALUE)
 
         if (status.isEmpty()) {
-            drawCenteredString(Fonts.font40, "Loading...", width / 2, height / 4 + 40, Color.WHITE.rgb)
+            drawCenteredString(Fonts.font40, "加载中...", width / 2, height / 4 + 40, Color.WHITE.rgb)
         } else {
             for (server in status.keys) {
                 val color = status[server]
@@ -42,7 +42,7 @@ class GuiServerStatus(private val prevGui: GuiScreen) : GuiScreen() {
             }
         }
 
-        Fonts.fontBold180.drawCenteredString("Server Status", this.width / 2F, height / 8f + 5F, 4673984, true)
+        Fonts.fontBold180.drawCenteredString("服务器状态", this.width / 2F, height / 8f + 5F, 4673984, true)
 
         super.drawScreen(mouseX, mouseY, partialTicks)
     }

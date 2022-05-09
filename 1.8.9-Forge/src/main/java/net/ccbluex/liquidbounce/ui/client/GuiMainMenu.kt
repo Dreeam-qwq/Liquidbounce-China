@@ -16,7 +16,7 @@ class GuiMainMenu : GuiScreen(), GuiYesNoCallback {
     override fun initGui() {
         val defaultHeight = this.height / 4 + 48
 
-        this.buttonList.add(GuiButton(100, this.width / 2 - 100, defaultHeight + 24, 98, 20, "Alt管理"))
+        this.buttonList.add(GuiButton(100, this.width / 2 - 100, defaultHeight + 24, 98, 20, "账号管理"))
         this.buttonList.add(GuiButton(103, this.width / 2 + 2, defaultHeight + 24, 98, 20, "模组"))
         this.buttonList.add(GuiButton(101, this.width / 2 - 100, defaultHeight + 24 * 2, 98, 20, "服务器状态"))
         this.buttonList.add(GuiButton(102, this.width / 2 + 2, defaultHeight + 24 * 2, 98, 20, "背景"))

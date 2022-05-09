@@ -27,7 +27,7 @@ class GuiUpdate : GuiScreen() {
         drawBackground(0)
 
         drawCenteredString(Fonts.font35, "b${LiquidBounce.latestVersion} 可以下载了!", width / 2, height / 8 + 80, 0xffffff)
-        drawCenteredString(Fonts.font35, "Press \"Download\" to visit our website or dismiss this message by pressing \"OK\".", width / 2, height / 8 + 80 + Fonts.font35.FONT_HEIGHT, 0xffffff)
+        drawCenteredString(Fonts.font35, "点击 \"下载\" 来访问我们的官网, 或者点击 \"确认\" 忽略这个消息.", width / 2, height / 8 + 80 + Fonts.font35.FONT_HEIGHT, 0xffffff)
 
         super.drawScreen(mouseX, mouseY, partialTicks)
 

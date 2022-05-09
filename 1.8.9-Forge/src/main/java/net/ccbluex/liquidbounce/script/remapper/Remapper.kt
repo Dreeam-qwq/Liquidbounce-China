@@ -32,15 +32,15 @@ object Remapper {
             // Download srg file
             srgFile.createNewFile()
 
-            ClientUtils.getLogger().info("[Remapper] 下载 $srgName srg中...")
+            ClientUtils.getLogger().info("[重映射] 下载srg $srgName 中...")
             HttpUtils.download("${LiquidBounce.CLIENT_CLOUD}/srgs/mcp-$srgName.srg", srgFile)
-            ClientUtils.getLogger().info("[Remapper] $srgName 下载完成.")
+            ClientUtils.getLogger().info("[重映射] $srgName 下载完成.")
         }
 
         // Load srg
-        ClientUtils.getLogger().info("[Remapper] 加载srg中...")
+        ClientUtils.getLogger().info("[重映射] 加载srg中...")
         parseSrg()
-        ClientUtils.getLogger().info("[Remapper] srg加载完成.")
+        ClientUtils.getLogger().info("[重映射] srg加载完成.")
     }
 
     private fun parseSrg() {

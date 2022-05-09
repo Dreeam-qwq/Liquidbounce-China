@@ -33,12 +33,12 @@ class GuiScripts(private val prevGui: GuiScreen) : GuiScreen() {
         list.elementClicked(-1, false, 0, 0)
 
         val j = 22
-        this.buttonList.add(GuiButton(0, width - 80, height - 65, 70, 20, "Back"))
-        this.buttonList.add(GuiButton(1, width - 80, j + 24, 70, 20, "Import"))
-        this.buttonList.add(GuiButton(2, width - 80, j + 24 * 2, 70, 20, "Delete"))
-        this.buttonList.add(GuiButton(3, width - 80, j + 24 * 3, 70, 20, "Reload"))
-        this.buttonList.add(GuiButton(4, width - 80, j + 24 * 4, 70, 20, "Folder"))
-        this.buttonList.add(GuiButton(5, width - 80, j + 24 * 5, 70, 20, "Docs"))
+        this.buttonList.add(GuiButton(0, width - 80, height - 65, 70, 20, "返回"))
+        this.buttonList.add(GuiButton(1, width - 80, j + 24, 70, 20, "导入"))
+        this.buttonList.add(GuiButton(2, width - 80, j + 24 * 2, 70, 20, "删除"))
+        this.buttonList.add(GuiButton(3, width - 80, j + 24 * 3, 70, 20, "重载"))
+        this.buttonList.add(GuiButton(4, width - 80, j + 24 * 4, 70, 20, "文件夹"))
+        this.buttonList.add(GuiButton(5, width - 80, j + 24 * 5, 70, 20, "文档"))
         this.buttonList.add(GuiButton(6, width - 80, j + 24 * 6, 70, 20, "Find Scripts"))
     }
 
@@ -47,7 +47,7 @@ class GuiScripts(private val prevGui: GuiScreen) : GuiScreen() {
 
         list.drawScreen(mouseX, mouseY, partialTicks)
 
-        drawCenteredString(Fonts.font40, "§9§lScripts", width / 2, 28, 0xffffff)
+        drawCenteredString(Fonts.font40, "§9§l脚本", width / 2, 28, 0xffffff)
         super.drawScreen(mouseX, mouseY, partialTicks)
     }
 
@@ -98,9 +98,9 @@ class GuiScripts(private val prevGui: GuiScreen) : GuiScreen() {
                     return
                 }
 
-                MiscUtils.showErrorPopup("Wrong file extension.", "The file extension has to be .js or .zip")
+                MiscUtils.showErrorPopup("文件扩展名错误.", "扩展名应该是 .js 或者 .zip")
             } catch (t: Throwable) {
-                ClientUtils.getLogger().error("Something went wrong while importing a script.", t)
+                ClientUtils.getLogger().error("导入脚本时发生错误.", t)
                 MiscUtils.showErrorPopup(t.javaClass.name, t.message)
             }
 
@@ -115,19 +115,19 @@ class GuiScripts(private val prevGui: GuiScreen) : GuiScreen() {
                     LiquidBounce.fileManager.loadConfig(LiquidBounce.fileManager.hudConfig)
                 }
             } catch (t: Throwable) {
-                ClientUtils.getLogger().error("Something went wrong while deleting a script.", t)
+                ClientUtils.getLogger().error("删除脚本时发生错误.", t)
                 MiscUtils.showErrorPopup(t.javaClass.name, t.message)
             }
             3 -> try {
                 LiquidBounce.scriptManager.reloadScripts()
             } catch (t: Throwable) {
-                ClientUtils.getLogger().error("Something went wrong while reloading all scripts.", t)
+                ClientUtils.getLogger().error("重载脚本时发生错误.", t)
                 MiscUtils.showErrorPopup(t.javaClass.name, t.message)
             }
             4 -> try {
                 Desktop.getDesktop().open(LiquidBounce.scriptManager.scriptsFolder)
             } catch (t: Throwable) {
-                ClientUtils.getLogger().error("Something went wrong while trying to open your scripts folder.", t)
+                ClientUtils.getLogger().error("打开脚本文件夹时发生错误.", t)
                 MiscUtils.showErrorPopup(t.javaClass.name, t.message)
             }
             5 -> try {

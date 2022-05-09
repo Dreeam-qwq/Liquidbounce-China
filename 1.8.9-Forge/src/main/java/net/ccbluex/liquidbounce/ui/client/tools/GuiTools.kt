@@ -13,8 +13,8 @@ import org.lwjgl.input.Keyboard
 class GuiTools(private val prevGui: GuiScreen) : GuiScreen() {
 
     override fun initGui() {
-        buttonList.add(GuiButton(1, width / 2 - 100, height / 4 + 48 + 25, "Port Scanner"))
-        buttonList.add(GuiButton(0, width / 2 - 100, height / 4 + 48 + 25 * 2 + 5, "Back"))
+        buttonList.add(GuiButton(1, width / 2 - 100, height / 4 + 48 + 25, "端口扫描"))
+        buttonList.add(GuiButton(0, width / 2 - 100, height / 4 + 48 + 25 * 2 + 5, "返回"))
     }
 
     override fun actionPerformed(button: GuiButton) {
@@ -26,7 +26,7 @@ class GuiTools(private val prevGui: GuiScreen) : GuiScreen() {
 
     override fun drawScreen(mouseX: Int, mouseY: Int, partialTicks: Float) {
         drawBackground(0)
-        Fonts.fontBold180.drawCenteredString("Tools", width / 2F, height / 8F + 5F, 4673984, true)
+        Fonts.fontBold180.drawCenteredString("工具", width / 2F, height / 8F + 5F, 4673984, true)
 
         super.drawScreen(mouseX, mouseY, partialTicks)
     }

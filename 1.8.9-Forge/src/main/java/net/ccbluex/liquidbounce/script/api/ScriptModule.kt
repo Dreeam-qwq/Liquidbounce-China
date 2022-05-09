@@ -127,7 +127,7 @@ class ScriptModule(private val moduleObject: JSObject) : Module() {
         try {
             events[eventName]?.call(moduleObject, payload)
         } catch (throwable: Throwable) {
-            ClientUtils.getLogger().error("[脚本接口] 模块 '$name'异常!", throwable)
+            ClientUtils.getLogger().error("[脚本接口] 模块 '$name' 出现异常!", throwable)
         }
     }
 }

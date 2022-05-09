@@ -41,7 +41,7 @@ class GuiContributors(private val prevGui: GuiScreen) : GuiScreen() {
         list.registerScrollButtons(7, 8)
         list.elementClicked(-1, false, 0, 0)
 
-        buttonList.add(GuiButton(1, width / 2 - 100, height - 30, "Back"))
+        buttonList.add(GuiButton(1, width / 2 - 100, height - 30, "返回"))
 
         failed = false
 
@@ -122,14 +122,14 @@ class GuiContributors(private val prevGui: GuiScreen) : GuiScreen() {
             }
         }
 
-        Fonts.font40.drawCenteredString("Contributors", width / 2F, 6F, 0xffffff)
+        Fonts.font40.drawCenteredString("贡献者", width / 2F, 6F, 0xffffff)
 
         if (credits.isEmpty()) {
             if (failed) {
                 val gb = ((sin(System.currentTimeMillis() * (1 / 333.0)) + 1) * (0.5 * 255)).toInt()
-                drawCenteredString(Fonts.font40, "Failed to load", width / 8, height / 2, Color(255, gb, gb).rgb)
+                drawCenteredString(Fonts.font40, "加载失败", width / 8, height / 2, Color(255, gb, gb).rgb)
             } else {
-                drawCenteredString(Fonts.font40, "Loading...", width / 8, height / 2, Color.WHITE.rgb)
+                drawCenteredString(Fonts.font40, "加载中...", width / 8, height / 2, Color.WHITE.rgb)
                 RenderUtils.drawLoadingCircle((width / 8).toFloat(), (height / 2 - 40).toFloat())
             }
         }
@@ -217,7 +217,7 @@ class GuiContributors(private val prevGui: GuiScreen) : GuiScreen() {
                 }
             }
         } catch (e: Exception) {
-            ClientUtils.getLogger().error("Failed to load credits.", e)
+            ClientUtils.getLogger().error("无法载入贡献者名单.", e)
             failed = true
         }
     }

@@ -15,7 +15,7 @@ import java.util.Map;
 public class MixinLoader implements IFMLLoadingPlugin {
 
     public MixinLoader() {
-        System.out.println("[水影] Injecting with IFMLLoadingPlugin.");
+        System.out.println("[汉化水影] 正在注入IFMLLoadingPlugin类....");
 
         MixinBootstrap.init();
         Mixins.addConfiguration("liquidbounce.forge.mixins.json");
