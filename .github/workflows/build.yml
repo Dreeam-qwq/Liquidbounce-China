@@ -26,9 +26,6 @@ jobs:
       - name: Package artifact
         run: |
           cd build/libs
-          export JAR=$(find . -regex '.*liquidbounce-[0-9|.]*\.jar')
-          cp $JAR liquidbounce.jar
-          rm liquidbounce-*.jar
           cp -r ../../zip_include ./
       - name: Upload liquidbounce
         uses: actions/upload-artifact@v3
