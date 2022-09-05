@@ -10,21 +10,21 @@ jobs:
     if: "!contains(github.event.commits[0].message, '[ci-skip]')"
     steps:
       - name: Checkout repository and submodules
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Setup java
-        uses: actions/setup-java@v3.3.0
+        uses: actions/setup-java@v3
         with:
-          distribution: "adopt"
+          distribution: "temurin"
           java-version: 8
           cache: "gradle"
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build
         run: ./gradlew build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3.0.0
+      - name: Upload LiquidbounceChina
+        uses: actions/upload-artifact@v3
         with:
-          name: LiquidBounce-b72
+          name: LiquidBounceChina-b72
           path: 1.8.9-Forge/build/libs
