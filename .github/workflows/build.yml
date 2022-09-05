@@ -1,4 +1,4 @@
-name: Build Liquidbounce Nextgen
+name: Build LiquidbounceChina-Nextgen
 
 on:
   push:

@@ -61,7 +61,7 @@ open class Sequence<T : Event>(val handler: SuspendableHandler<T>, val event: T)
         runCatching {
             handler(event)
         }.onFailure {
-            logger.error("Exception occurred during subroutine", it)
+            logger.error("子程序出现异常", it)
         }
     }
 
@@ -110,7 +110,7 @@ class RepeatingSequence(handler: SuspendableHandler<DummyEvent>) : Sequence<Dumm
             runCatching {
                 handler(event)
             }.onFailure {
-                logger.error("Exception occurred during subroutine", it)
+                logger.error("子程序出现异常", it)
             }
 
             sync()

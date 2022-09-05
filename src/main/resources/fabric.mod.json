@@ -5,7 +5,8 @@
   "name": "LiquidBounce",
   "description": "A free mixin-based injection hacked-client",
   "authors": [
-    "CCBlueX"
+    "CCBlueX",
+    "go176"
   ],
   "contact": {
     "homepage": "https://liquidbounce.net/",

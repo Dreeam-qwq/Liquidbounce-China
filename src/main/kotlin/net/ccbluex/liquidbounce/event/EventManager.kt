@@ -107,7 +107,7 @@ object EventManager {
             runCatching {
                 eventHook.handler(event)
             }.onFailure {
-                logger.error("Exception while executing handler.", it)
+                logger.error("执行handler时出现异常.", it)
             }
         }
 

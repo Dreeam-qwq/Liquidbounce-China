@@ -92,13 +92,13 @@ object ConfigSystem {
                     return@runCatching
                 }
 
-                logger.debug("Reading config ${configurable.name}...")
+                logger.debug("正在读取 ${configurable.name}配置...")
 
                 JsonParser.parseReader(gson.newJsonReader(reader()))?.let { deserializeConfigurable(configurable, it) }
 
-                logger.info("Successfully loaded config '${configurable.name}'.")
+                logger.info("成功加载 '${configurable.name}'配置.")
             }.onFailure {
-                logger.error("Unable to load config ${configurable.name}", it)
+                logger.error("无法读取 ${configurable.name}配置", it)
                 store()
             }
         }
@@ -159,16 +159,16 @@ object ConfigSystem {
         for (configurable in configurables) { // Make a new .json file to save our root configurable
             File(rootFolder, "${configurable.name.lowercase()}.json").runCatching {
                 if (!exists()) {
-                    createNewFile().let { logger.debug("Created new file (status: $it)") }
+                    createNewFile().let { logger.debug("创建新文件 (进度: $it)") }
                 }
 
-                logger.debug("Writing config ${configurable.name}...")
+                logger.debug("正在写入 ${configurable.name}配置...")
                 gson.newJsonWriter(writer()).use {
                     gson.toJson(configurable, confType, it)
                 }
-                logger.info("Successfully saved config '${configurable.name}'.")
+                logger.info("成功保存 '${configurable.name}'配置.")
             }.onFailure {
-                logger.error("Unable to store config ${configurable.name}", it)
+                logger.error("无法保存 ${configurable.name}配置", it)
             }
         }
     }

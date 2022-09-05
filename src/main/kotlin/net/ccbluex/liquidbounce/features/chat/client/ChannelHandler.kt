@@ -68,7 +68,7 @@ class ChannelHandler(private val handshaker: WebSocketClientHandshaker) : Simple
      * Sub-classes may override this method to change behavior.
      */
     override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-        logger.error("LiquidChat error", cause)
+        logger.error("水影云聊天功能异常", cause)
         Chat.onError(cause)
         if (!handshakeFuture.isDone) handshakeFuture.setFailure(cause)
         ctx.close()

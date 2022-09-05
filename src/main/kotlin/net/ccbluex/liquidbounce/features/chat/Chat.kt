@@ -84,55 +84,55 @@ object Chat : ToggleableConfigurable(null, "chat", true) {
     }
 
     internal fun onConnect() {
-        logger.info("Connecting to LiquidChat...")
-        notification("LiquidChat", TranslatableText("liquidbounce.liquidchat.states.connecting"), NotificationEvent.Severity.INFO)
+        logger.info("正在连接水影云聊天服务器...")
+        notification("水影云聊天", TranslatableText("liquidbounce.liquidchat.states.connecting"), NotificationEvent.Severity.INFO)
     }
 
     internal fun onConnected() {
-        logger.info("Successfully connected to LiquidChat!")
+        logger.info("成功连接至水影云聊天服务器!")
 
-        notification("LiquidChat", TranslatableText("liquidbounce.liquidchat.states.connected"), NotificationEvent.Severity.INFO)
+        notification("水影云聊天", TranslatableText("liquidbounce.liquidchat.states.connected"), NotificationEvent.Severity.INFO)
 
         if (jwtLogin) {
-            logger.info("Logging in via JWT...")
+            logger.info("通过JWT登录中...")
             loginViaJWT(jwtToken)
         } else {
-            logger.info("Requesting to login into Mojang...")
+            logger.info("正在登录Mojang服务器...")
             requestMojangLogin()
         }
     }
 
     internal fun onDisconnect() {
         client.channel = null
-        notification("LiquidChat", TranslatableText("liquidbounce.liquidchat.states.disconnected"), NotificationEvent.Severity.INFO)
+        notification("水影云聊天", TranslatableText("liquidbounce.liquidchat.states.disconnected"), NotificationEvent.Severity.INFO)
     }
 
     internal fun onLogon() {
-        notification("LiquidChat", TranslatableText("liquidbounce.liquidchat.states.loggingIn"), NotificationEvent.Severity.INFO)
+        notification("水影云聊天", TranslatableText("liquidbounce.liquidchat.states.loggingIn"), NotificationEvent.Severity.INFO)
     }
 
     internal fun onLoggedIn() {
-        notification("LiquidChat", TranslatableText("liquidbounce.liquidchat.states.loggedIn"), NotificationEvent.Severity.SUCCESS)
+        notification("水影云聊天", TranslatableText("liquidbounce.liquidchat.states.loggedIn"), NotificationEvent.Severity.SUCCESS)
     }
 
     internal fun onClientError(packet: ClientErrorPacket) {
         // add translation support
         val message = when (packet.message) {
-            "NotSupported" -> "This method is not supported!"
-            "LoginFailed" -> "Login Failed!"
-            "NotLoggedIn" -> "You must be logged in to use the chat! Enable LiquidChat."
-            "AlreadyLoggedIn" -> "You are already logged in!"
-            "MojangRequestMissing" -> "Mojang request missing!"
-            "NotPermitted" -> "You are missing the required permissions!"
-            "NotBanned" -> "You are not banned!"
-            "Banned" -> "You are banned!"
-            "RateLimited" -> "You have been rate limited. Please try again later."
-            "PrivateMessageNotAccepted" -> "Private message not accepted!"
-            "EmptyMessage" -> "You are trying to send an empty message!"
-            "MessageTooLong" -> "Message is too long!"
-            "InvalidCharacter" -> "Message contains a non-ASCII character!"
-            "InvalidId" -> "The given ID is invalid!"
-            "Internal" -> "An internal server error occurred!"
+            "NotSupported" -> "不支持此方法!"
+            "LoginFailed" -> "登录失败!"
+            "NotLoggedIn" -> "你必须登录后才能聊天! 开启水影云聊天."
+            "AlreadyLoggedIn" -> "你已经登录了!"
+            "MojangRequestMissing" -> "无法请求Mojang服务器!"
+            "NotPermitted" -> "你没有权限!"
+            "NotBanned" -> "你没有被封禁!"
+            "Banned" -> "你被封禁了!"
+            "RateLimited" -> "速度过快. 请稍后再试."
+            "PrivateMessageNotAccepted" -> "私信不被接受!"
+            "EmptyMessage" -> "你不能发送一个空消息!"
+            "MessageTooLong" -> "消息过长!"
+            "InvalidCharacter" -> "消息不能包含非ASCII字符!"
+            "InvalidId" -> "指定ID不存在!"
+            "Internal" -> "内部服务器错误!"
             else -> packet.message
         }
 
@@ -142,11 +142,11 @@ object Chat : ToggleableConfigurable(null, "chat", true) {
         val player = mc.player
 
         if (player == null) {
-            logger.info("[Chat] $message")
+            logger.info("[云聊天] $message")
             return
         }
 
-        player.sendMessage("§7[§a§lChat§7] §9$message".asText(), false)
+        player.sendMessage("§7[§a§l云聊天§7] §9$message".asText(), false)
     }
 
     internal fun onMessage(user: User, message: String) {
@@ -156,11 +156,11 @@ object Chat : ToggleableConfigurable(null, "chat", true) {
         val player = mc.player
 
         if (player == null) {
-            logger.info("[Chat] ${user.name}: $message")
+            logger.info("[云聊天] ${user.name}: $message")
             return
         }
 
-        player.sendMessage("§7[§a§lChat§7] §9${user.name}: §r$message".asText(), false)
+        player.sendMessage("§7[§a§l云聊天§7] §9${user.name}: §r$message".asText(), false)
     }
 
     internal fun onPrivateMessage(user: User, message: String) {
@@ -170,20 +170,20 @@ object Chat : ToggleableConfigurable(null, "chat", true) {
         val player = mc.player
 
         if (player == null) {
-            logger.info("[Chat] ${user.name}: $message")
+            logger.info("[水影云聊天] ${user.name}: $message")
             return
         }
 
-        player.sendMessage("§7[§a§lChat§7] §9${user.name}: §r$message".asText(), false)
+        player.sendMessage("§7[§a§l水影云聊天§7] §9${user.name}: §r$message".asText(), false)
     }
 
     internal fun onError(cause: Throwable) {
-        notification("LiquidChat", TranslatableText("liquidbounce.generic.notifyDeveloper"), NotificationEvent.Severity.ERROR)
-        logger.error("LiquidChat error", cause)
+        notification("水影云聊天", TranslatableText("liquidbounce.generic.notifyDeveloper"), NotificationEvent.Severity.ERROR)
+        logger.error("水影云聊天功能异常", cause)
     }
 
     internal fun onReceivedJwtToken(jwt: String) {
-        notification("LiquidChat", TranslatableText("liquidbounce.liquidchat.jwtTokenReceived"), NotificationEvent.Severity.SUCCESS)
+        notification("水影云聊天", TranslatableText("liquidbounce.liquidchat.jwtTokenReceived"), NotificationEvent.Severity.SUCCESS)
 
         // Set jwt token
         jwtLogin = true
@@ -235,8 +235,8 @@ object Chat : ToggleableConfigurable(null, "chat", true) {
                         onLoggedIn()
                         loggedIn = true
                     }
-                    "Ban" -> chat("§7[§a§lChat§7] §9Successfully banned user!")
-                    "Unban" -> chat("§7[§a§lChat§7] §9Successfully unbanned user!")
+                    "Ban" -> chat("§7[§a§l水影云聊天§7] §9成功封禁玩家!")
+                    "Unban" -> chat("§7[§a§l水影云聊天§7] §9成功解封玩家!")
                 }
             }
             is ClientNewJWTPacket -> onReceivedJwtToken(packet.token)
