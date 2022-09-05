@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository and submodules
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Setup java
-        uses: actions/setup-java@v3.3.0
+        uses: actions/setup-java@v3
         with:
-          distribution: "adopt"
+          distribution: "temurin"
           java-version: 8
           cache: "gradle"
       - name: Grant execute permission for gradlew
@@ -27,8 +27,8 @@ jobs:
         run: |
           cd build/libs
           cp -r ../../zip_include ./
-      - name: Upload liquidbounce
+      - name: Upload liquidbounceChina
         uses: actions/upload-artifact@v3
         with:
-          name: LiquidBounce-legacy
+          name: LiquidBounceChina-legacy
           path: build/libs
