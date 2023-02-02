@@ -2,7 +2,6 @@
 <p>
     <img width="200" src="https://raw.githubusercontent.com/CCBlueX/LiquidCloud/master/LiquidBounce/liquidbounceLogo.svg">
 </p>
-
 [liquidbounce.net](https://liquidbounce.net) |
 [论坛](https://forums.ccbluex.net) |
 [Guilded](https://guilded.gg/CCBlueX) |
@@ -14,7 +13,7 @@
 [中文水影官网](https://mctest.go176.net)(暂未开放)
 </div>
 
-水影是一个免费开源并基于Mixin的注入式黑客端, 使用Fabric API. 
+水影是一个免费开源并基于Mixin的注入式黑客端, 使用Fabric API.
 
 ## 反馈问题
 如果你在使用**水影**的时候遇到任何问题/bug或新增的功能, 你可以在 [这里](https://github.com/CCBlueX/LiquidBounce/issues) 创建一个Issue. 记得使用英文:)
@@ -33,13 +32,13 @@
 *如果你想要使用此源码中的**任何**代码:*
 
 - **你必须开源你修改后的源码以及你从此项目中获取的源代码。这意味着您不允许在闭源/混淆应用程序中使用此项目的代码(或者部分代码).**
-- **你修改过的应用必须遵守GPL开源许可** 
+- **你修改过的应用必须遵守GPL开源许可**
 
-## 编译
+## 构建
 水影使用Gradle, 为了确保它安装正确，你可以查看[Gradle官网](https://gradle.org/install/).
-1. 使用 `git clone --recurse-submodules https://github.com/CCBlueX/LiquidBounce` 克隆水影仓库. 
+1. 使用 `git clone --recurse-submodules https://github.com/CCBlueX/LiquidBounce` 克隆水影仓库.
 2. CD到本地仓库文件夹.
-3. 运行 `gradlew genSources`.
+3. 运行 `./gradlew genSources`.
 4. 在你喜爱的ide中以Gradle项目打开文件夹.
 5. 运行客户端.
 
