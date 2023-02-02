@@ -1,4 +1,4 @@
-name: Build LiquidbounceChina-Nextgen
+name: Build LiquidbounceChina Nextgen
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.commits[0].message, '[ci-skip]')"
     steps:
       - name: Checkout repository and submodules
         uses: actions/checkout@v3
@@ -18,8 +17,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: Grant all permissions for theme
-        run: sudo chmod -R 777 theme
       - uses: burrunan/gradle-cache-action@v1
         name: Build
         with:

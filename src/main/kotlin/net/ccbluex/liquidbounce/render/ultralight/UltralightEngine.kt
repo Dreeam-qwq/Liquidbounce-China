@@ -31,6 +31,7 @@ import net.ccbluex.liquidbounce.render.ultralight.glfw.GlfwCursorAdapter
 import net.ccbluex.liquidbounce.render.ultralight.glfw.GlfwInputAdapter
 import net.ccbluex.liquidbounce.render.ultralight.hooks.UltralightIntegrationHook
 import net.ccbluex.liquidbounce.render.ultralight.hooks.UltralightScreenHook
+import net.ccbluex.liquidbounce.render.ultralight.js.bindings.UltralightStorage
 import net.ccbluex.liquidbounce.render.ultralight.renderer.CpuViewRenderer
 import net.ccbluex.liquidbounce.utils.client.ThreadLock
 import net.ccbluex.liquidbounce.utils.client.logger
@@ -121,6 +122,8 @@ object UltralightEngine {
         UltralightIntegrationHook
         UltralightScreenHook
 
+        UltralightStorage
+
         // Setup GLFW adapters
         clipboardAdapter = GlfwClipboardAdapter()
         cursorAdapter = GlfwCursorAdapter()
@@ -138,13 +141,31 @@ object UltralightEngine {
         renderer.get().update()
     }
 
+
+
     fun render(layer: RenderLayer, matrices: MatrixStack) {
-        renderer.get().render()
+        frameLimitedRender()
 
         views.filter { it.layer == layer }
             .forEach {
                 it.render(matrices)
             }
+    }
+
+    // Maximum frame rate for the renderer
+    private const val MAX_FRAME_RATE = 60
+    private var lastRenderTime = 0.0
+    private fun frameLimitedRender() {
+        val frameTime = 1.0 / MAX_FRAME_RATE
+        val time = System.nanoTime() / 1e9
+        val delta = time - lastRenderTime
+
+        if (delta < frameTime) {
+            return
+        }
+
+        renderer.get().render()
+        lastRenderTime = time
     }
 
     fun resize(width: Long, height: Long) {
