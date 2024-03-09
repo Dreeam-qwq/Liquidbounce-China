@@ -1,3 +1,8 @@
+## ⚠️WARNING⚠️
+
+此项目已弃坑, 因为我认为单独开个汉化水影的fork没有任何意义, 请使用[LiquidBounce](https://github.com/CCBlueX/LiquidBounce)。
+
+
 <div align="center">
 <p>
     <img width="200" src="https://raw.githubusercontent.com/CCBlueX/LiquidCloud/master/LiquidBounce/liquidbounceLogo.svg">
